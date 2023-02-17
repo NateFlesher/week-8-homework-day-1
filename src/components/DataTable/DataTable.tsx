@@ -6,29 +6,27 @@ import { useGetData } from '../../custom-hooks';
 import {
     Button,
     Dialog,
+    DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle
+    DialogTitle,
 } from '@mui/material'
 import { DroneForm } from '../DroneForm';
+import { getAuth } from 'firebase/auth';
 
-interface GridData {
-    data: {
-        id?: string
-    }
-}
+
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-        field: 'name',
-        headerName: 'Name',
+        field: 'make',
+        headerName: 'Make',
         width: 150,
         editable: true,
     },
     {
-        field: 'description',
-        headerName: 'Description',
+        field: 'model',
+        headerName: 'Model',
         width: 150,
         editable: true,
     },
@@ -40,16 +38,10 @@ const columns: GridColDef[] = [
         type: 'number'
     },
     {
-        field: 'camera_quality',
-        headerName: 'Camera Quality',
-        width: 160
-    },
-
-    {
-        field: 'flight_time',
-        headerName: 'Flight Time',
+        field: 'mpg',
+        headerName: 'MPG',
         width: 110,
-        editable: true
+        editable: true,
     },
 
     {
@@ -80,15 +72,12 @@ const columns: GridColDef[] = [
         editable: true,
         type: 'number'
     },
-
-    {
-        field: 'Series',
-        headerName: 'series',
-        width: 110,
-        editable: true,
-
-    },
 ];
+interface GridData {
+    data: {
+        id?: string
+    }
+}
 
 
 export const DataTable = () => {
@@ -125,12 +114,15 @@ export const DataTable = () => {
             <Button onClick={handleOpen}>Update</Button>
             <Button variant="contained" color="secondary" onClick={deleteData}>Delete</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id='form-dialog-title'>Update a Drone</DialogTitle>
+                <DialogTitle id="form-dialog-title">Update Drone</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>Drone Id: {gridData[0]}
-                        <DroneForm id={`${gridData[0]}`} />
-                    </DialogContentText>
+                    <DialogContentText>Drone id: {gridData[0]}</DialogContentText>
+                    <DroneForm id={`${gridData[0]}`} />
                 </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">Cancel</Button>
+                    <Button onClick={handleClose} color="secondary">Done</Button>
+                </DialogActions>
             </Dialog>
         </div>
     );

@@ -151,8 +151,7 @@ export const Dashboard = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap> Dashboard</Typography>
-                    <Button sx={myStyles.toolbar_button}>Create New Drone</Button>
-                    /* Dialog Pop up for Create a new Drone*/
+                    <Button sx={myStyles.toolbar_button} onClick={handleDialogOpen}>Create New Drone</Button>
                     <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
                         <DialogTitle id="form-dialog-title">Add New Drone</DialogTitle>
                         <DialogContent>

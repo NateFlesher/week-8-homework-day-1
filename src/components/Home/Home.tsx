@@ -1,7 +1,7 @@
 import React from "react";
 import { flexbox, styled } from '@mui/system';
 import { Button } from "@mui/material";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import drone_image from '../../assets/images/car_inventory.avif'
 
 interface Props {
@@ -75,18 +75,21 @@ export const Home = (props: Props) => {
                         <NavA to="/">Home</NavA>
                     </li>
                     <li>
-                        <NavA to="/dashboard">About</NavA>
+                        <NavA to="/dashboard">Dashboard</NavA>
                     </li>
                     <li>
-                        <NavA to="/signin">Learn More</NavA>
+                        <NavA to="/signin">Sign In</NavA>
+                    </li>
+                    <li>
+                        <NavA to="/signup">Sign Up</NavA>
                     </li>
                 </LogoNavigation>
             </NavbarContainer>
             <Main>
                 <MainText>
                     <h1>{props.title}</h1>
-                    <p>Cars are cool</p>
-                    <Button color='primary' variant='contained' component = {Link} to='/dashboard'>See the Drones</Button>
+                    <p>Drones are fly</p>
+                    <Button color='primary' variant='contained' component={Link} to='/dashboard'>See the Drones</Button>
                 </MainText>
             </Main>
         </Root>
